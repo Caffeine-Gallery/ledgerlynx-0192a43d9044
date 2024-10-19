@@ -5,6 +5,8 @@ document.addEventListener('DOMContentLoaded', async () => {
   const entriesTable = document.getElementById('entriesTable').getElementsByTagName('tbody')[0];
   const getSecondHighestRateButton = document.getElementById('getSecondHighestRate');
   const secondHighestRateDisplay = document.getElementById('secondHighestRate');
+  const getTotalICPBalanceButton = document.getElementById('getTotalICPBalance');
+  const totalICPBalanceDisplay = document.getElementById('totalICPBalance');
 
   entryForm.addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -22,6 +24,15 @@ document.addEventListener('DOMContentLoaded', async () => {
       secondHighestRateDisplay.textContent = `Second Highest Exchange Rate: ${secondHighestRate}`;
     } else {
       secondHighestRateDisplay.textContent = 'Not enough entries to determine second highest rate.';
+    }
+  });
+
+  getTotalICPBalanceButton.addEventListener('click', async () => {
+    const totalICPBalance = await backend.getTotalICPBalance();
+    if (totalICPBalance !== null) {
+      totalICPBalanceDisplay.textContent = `Total ICP Balance: ${totalICPBalance}`;
+    } else {
+      totalICPBalanceDisplay.textContent = 'No entries available to calculate total ICP balance.';
     }
   });
 

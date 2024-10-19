@@ -43,4 +43,13 @@ actor {
     );
     ?sortedRates[sortedRates.size() - 2]
   };
+
+  // Function to compute the total ICP balance
+  public query func getTotalICPBalance() : async ?Float {
+    if (entries.size() == 0) {
+      return null;
+    };
+    let latestEntry = entries[entries.size() - 1];
+    ?(latestEntry.nICPBalance * latestEntry.exchangeRate)
+  };
 }

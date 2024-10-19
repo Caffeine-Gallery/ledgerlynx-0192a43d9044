@@ -11,6 +11,7 @@ export interface _SERVICE {
   'addEntry' : ActorMethod<[number, number], undefined>,
   'getEntries' : ActorMethod<[], Array<FinancialEntry>>,
   'getSecondHighestExchangeRate' : ActorMethod<[], [] | [number]>,
+  'getTotalICPBalance' : ActorMethod<[], [] | [number]>,
 }
 export declare const idlFactory: IDL.InterfaceFactory;
 export declare const init: (args: { IDL: typeof IDL }) => IDL.Type[];

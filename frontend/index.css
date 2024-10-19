@@ -58,7 +58,7 @@ tr:nth-child(even) {
     background-color: #f9f9f9;
 }
 
-#secondHighestRate {
+#secondHighestRate, #totalICPBalance {
     font-weight: bold;
     margin-top: 10px;
 }

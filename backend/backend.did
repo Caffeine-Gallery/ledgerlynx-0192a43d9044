@@ -8,4 +8,5 @@ service : {
   addEntry: (float64, float64) -> ();
   getEntries: () -> (vec FinancialEntry) query;
   getSecondHighestExchangeRate: () -> (opt float64) query;
+  getTotalICPBalance: () -> (opt float64) query;
 }

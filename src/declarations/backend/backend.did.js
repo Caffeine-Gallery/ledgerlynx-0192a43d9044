@@ -12,6 +12,7 @@ export const idlFactory = ({ IDL }) => {
         [IDL.Opt(IDL.Float64)],
         ['query'],
       ),
+    'getTotalICPBalance' : IDL.Func([], [IDL.Opt(IDL.Float64)], ['query']),
   });
 };
 export const init = ({ IDL }) => { return []; };
