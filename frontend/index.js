@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   getSecondHighestRateButton.addEventListener('click', async () => {
     const secondHighestRate = await backend.getSecondHighestExchangeRate();
     if (secondHighestRate !== null) {
-      secondHighestRateDisplay.textContent = `Second Highest Exchange Rate: ${secondHighestRate.toFixed(6)}`;
+      secondHighestRateDisplay.textContent = `Second Highest Exchange Rate: ${secondHighestRate}`;
     } else {
       secondHighestRateDisplay.textContent = 'Not enough entries to determine second highest rate.';
     }
