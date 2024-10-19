@@ -4,6 +4,7 @@ import Int "mo:base/Int";
 import Time "mo:base/Time";
 import Array "mo:base/Array";
 import Float "mo:base/Float";
+import Order "mo:base/Order";
 
 actor {
   // Define the structure for financial data entries
@@ -29,5 +30,17 @@ actor {
   // Function to get all entries
   public query func getEntries() : async [FinancialEntry] {
     entries
+  };
+
+  // Function to get the second highest exchange rate
+  public query func getSecondHighestExchangeRate() : async ?Float {
+    if (entries.size() < 2) {
+      return null;
+    };
+    let sortedRates = Array.sort(
+      Array.map(entries, func (entry: FinancialEntry) : Float { entry.exchangeRate }),
+      Float.compare
+    );
+    ?sortedRates[sortedRates.size() - 2]
   };
 }

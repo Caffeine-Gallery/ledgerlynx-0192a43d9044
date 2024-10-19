@@ -7,6 +7,11 @@ export const idlFactory = ({ IDL }) => {
   return IDL.Service({
     'addEntry' : IDL.Func([IDL.Float64, IDL.Float64], [], []),
     'getEntries' : IDL.Func([], [IDL.Vec(FinancialEntry)], ['query']),
+    'getSecondHighestExchangeRate' : IDL.Func(
+        [],
+        [IDL.Opt(IDL.Float64)],
+        ['query'],
+      ),
   });
 };
 export const init = ({ IDL }) => { return []; };

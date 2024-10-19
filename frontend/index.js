@@ -3,6 +3,8 @@ import { backend } from 'declarations/backend';
 document.addEventListener('DOMContentLoaded', async () => {
   const entryForm = document.getElementById('entryForm');
   const entriesTable = document.getElementById('entriesTable').getElementsByTagName('tbody')[0];
+  const getSecondHighestRateButton = document.getElementById('getSecondHighestRate');
+  const secondHighestRateDisplay = document.getElementById('secondHighestRate');
 
   entryForm.addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -12,6 +14,15 @@ document.addEventListener('DOMContentLoaded', async () => {
     await backend.addEntry(nICPBalance, exchangeRate);
     await updateEntriesTable();
     entryForm.reset();
+  });
+
+  getSecondHighestRateButton.addEventListener('click', async () => {
+    const secondHighestRate = await backend.getSecondHighestExchangeRate();
+    if (secondHighestRate !== null) {
+      secondHighestRateDisplay.textContent = `Second Highest Exchange Rate: ${secondHighestRate.toFixed(6)}`;
+    } else {
+      secondHighestRateDisplay.textContent = 'Not enough entries to determine second highest rate.';
+    }
   });
 
   async function updateEntriesTable() {
